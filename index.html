@@ -15,6 +15,7 @@
   --bg:#141010; --panel:#1e1816; --panel2:#2a211e; --fg:#efe6da; --fg2:#b1a193; --line:#3a2e29;
   --accent:#e0646f; --accent2:#e6a84f; --glow:#4a3b35; --header:#0d0a09; --header-fg:#f3ebe0; --good:#8fc281; color-scheme:dark }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5;margin:0;padding-inline:0;padding-block:0 56px}
 .gutter{padding-inline:clamp(16px,3vw,32px)}
 .wrap{max-width:1160px;margin:0 auto}
@@ -207,14 +208,73 @@ html{scroll-behavior:smooth}
 .view>*{animation:rise .55s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:calc(var(--s,0)*70ms)}
 @media (prefers-reduced-motion:reduce){ *,*::before,*::after{animation:none!important;transition:none!important} html{scroll-behavior:auto} }
 
+/* ---------- portada estilo Fragrantica ---------- */
+.feedbar{background:var(--panel2);border-bottom:1px solid var(--line);font-size:13px}
+.feedbar .wrap{display:flex;gap:14px;align-items:center;padding-block:7px}
+.feedbar a{margin-left:auto;font-weight:700;text-decoration:none}
+.dd{position:relative}
+.dd>button{font:inherit;font-size:14px;background:none;border:0;color:var(--header-fg);opacity:.85;cursor:pointer;padding:0}
+.dd>button:hover{opacity:1;text-decoration:underline}
+.dd-menu{position:absolute;top:calc(100% + 10px);left:0;background:var(--panel);color:var(--fg);border:1px solid var(--line);border-radius:10px;padding:8px;display:grid;grid-template-columns:repeat(2,minmax(150px,1fr));gap:2px;z-index:20;box-shadow:0 24px 40px -20px rgba(0,0,0,.6)}
+.dd-menu a{padding:8px 10px;border-radius:6px;color:var(--fg);text-decoration:none;font-size:14px;opacity:1}
+.dd-menu a:hover{background:var(--panel2)}
+.home{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:24px;align-items:start}
+.hmain{display:grid;gap:28px;min-width:0}
+.side{display:grid;gap:18px;align-content:start;min-width:0}
+.side .panel{padding:16px}
+.shead{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+.shead h2{margin:0}
+.shead .more{margin-left:auto;font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap}
+.tabs.mini{margin:0;gap:4px}
+.tabs.mini button{padding:4px 10px;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.art{position:relative;min-width:0}
+.art .im{display:block;position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:10px;background:var(--panel2)}
+.art .im img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.art:hover .im img{transform:scale(1.04)}
+.art.hero .im{aspect-ratio:16/8}
+.art .pill{position:absolute;left:14px;bottom:14px;background:rgba(0,0,0,.5);color:#fff;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:5px 11px;border-radius:999px;backdrop-filter:blur(6px);font-weight:700}
+.art h3{font-size:20px;line-height:1.25;margin:12px 0 4px}
+.art.hero h3{font-size:26px}
+.art h3 a{color:inherit;text-decoration:none}
+.art h3 a:hover{text-decoration:underline}
+.art .sub{color:var(--fg2);margin:0 0 6px;font-size:14px}
+.byline{display:flex;gap:8px;align-items:center;font-size:13px;line-height:1.2}
+.avatar{width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:11px;font-weight:700;flex:none}
+.grid2art{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.row{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 10px;scrollbar-width:thin}
+.row>*{flex:0 0 250px;scroll-snap-align:start}
+.row>.card{flex-basis:160px}
+.post{border:1px solid var(--line);background:var(--panel);padding:12px;border-radius:10px;display:grid;gap:6px;font-size:13px;align-content:start}
+.post .type{font-size:10px;letter-spacing:.14em;color:var(--accent2);font-weight:700}
+.post .txt{display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden;line-height:1.45}
+.post .foot{display:flex;justify-content:space-between;gap:8px;color:var(--fg2);font-variant-numeric:tabular-nums}
+.stats{display:grid;grid-template-columns:1fr auto;gap:6px 12px;font-size:14px}
+.stats b{font-variant-numeric:tabular-nums}
+.hist{display:flex;align-items:end;gap:2px;height:44px;margin-top:12px}
+.hist i{flex:1;background:var(--accent2);opacity:.75;border-radius:2px 2px 0 0;transform-origin:bottom}
+@media (prefers-reduced-motion:no-preference){ .hist i{animation:grow .8s ease-out both} }
+.rev{display:grid;grid-template-columns:44px minmax(0,1fr);gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);font-size:12px;text-decoration:none;color:var(--fg)}
+.rev .pic{width:44px;border-radius:4px}
+.rev b{display:block;font-size:14px}
+.rev:hover b{color:var(--accent)}
+.rank{list-style:none;padding:0;margin:0;font-size:13px}
+.rank li{padding:5px 0;border-bottom:1px solid var(--line);display:flex;gap:8px;min-width:0}
+.rank .n{color:var(--fg2);min-width:24px;font-variant-numeric:tabular-nums}
+.rank a{text-decoration:none;color:var(--fg)} .rank a:hover{color:var(--accent)}
+.cta{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:26px;border-radius:14px}
+.cta h3{font-family:var(--display);font-weight:400;font-size:28px;margin-bottom:8px}
+.cta p{color:#fff;opacity:.9}
+@media (max-width:980px){ .home{grid-template-columns:1fr} }
+
 </style>
 
 <header class="gutter"><div class="wrap">
   <a class="logo" href="#"><b></b>Olfatorio <small>enciclopedia</small></a>
-  <nav id="nav"><a href="#">Inicio</a><a href="#marcas">Marcas</a><a href="#notas">Notas</a><a href="#acordes">Acordes</a><a href="#compare">Comparar</a><a href="#foto">Buscar por foto</a><a href="#mejor">Mismo concepto o mejor</a></nav>
+  <nav id="nav"><a href="#noticias">Noticias</a><span class="dd"><button type="button" id="ddbtn" aria-expanded="false">Perfumes ▾</button><div class="dd-menu" id="ddmenu" hidden><a href="#">Buscar</a><a href="#marcas">Marcas</a><a href="#notas">Buscar por notas</a><a href="#acordes">Buscar por acordes</a><a href="#compare">Comparar</a><a href="#foto">Buscar por foto</a><a href="#mejor">Mismo concepto o mejor</a><a href="#b-bujairami">Bujairami</a></div></span><a href="#notas">Notas</a><a href="#feed">Feed</a><a href="#compare">Comparar</a><a href="#foto">Buscar por foto</a></nav>
   <form class="search" id="sform" autocomplete="off"><input id="q" type="search" placeholder="Perfume, marca, nota o acorde" aria-label="Buscar"><button class="btn" type="submit">Buscar</button><div class="sugg" id="sugg" hidden></div></form>
 </div></header>
 
+<div class="feedbar gutter"><div class="wrap"><b>Feed</b><span class="muted">De lo que habla ahora la comunidad</span><a href="#feed">Abrir el feed ›</a></div></div>
 <main class="gutter"><div class="wrap"><div id="app" class="view"></div>
 <footer>Olfatorio es una réplica independiente de ficha de perfumes construida con datos públicos de Fragrantica recogidos el 3 de octubre de 2026. Precios orientativos. No afiliada a Fragrantica.</footer>
 </div></main>
@@ -238,6 +298,37 @@ const fmt = n => n==null?'—':Number(n).toLocaleString('es-ES');
 const eur = n => n==null?'sin precio':(Number.isInteger(n)?n:n.toFixed(2).replace('.',','))+' €';
 const NOTE_COLORS = {}; const palette=['#c0314f','#d9822b','#5b3a22','#7d7d7d','#d6476f','#b88a3a','#8a6a4a','#4b9a56','#5c8a9e','#e0b7c6','#a98b6b','#c97a2b','#2f6f73','#8b4a8b','#b5651d','#3b6e3b'];
 function ncolor(n){ if(!NOTE_COLORS[n]){ let h=0; for(const c of n) h=(h*31+c.charCodeAt(0))>>>0; NOTE_COLORS[n]=palette[h%palette.length]; } return NOTE_COLORS[n]; }
+const NEWS=[
+{id:11949,cat:"Arte, libros y eventos",title:"MxScent 2026: Una celebración de la perfumería nicho y el talento mexicano",sub:"MXSCENT celebra su quinta edición.",author:"Nayeli Cano",time:"hace 3 horas"},
+{id:11948,cat:"Fragancias nicho",title:"Night Gallery - Into The Night",sub:"¿Es esto una referencia a Twin Peaks?",author:"Miguel Matos",time:"hace 21 horas"},
+{id:11947,cat:"Fragancias nicho",title:"Casa Far Niente presenta Mayfair Manor",sub:"«Londres a medianoche.»",author:"Stefanie Jähn",time:"hace 1 día"},
+{id:11946,cat:"Fragancias nicho",title:"Accordi Olfattivi Firenze, la nueva marca toscana",sub:"Un homenaje a la ciudad de Dante, presentado durante los días de Pitti Fragranze.",author:"Giulietta Ptoyan",time:"hace 1 día"},
+{id:11945,cat:"Fragancias nicho",title:"Pitti 2026: Dilli House y su dúo Prem Rouge",sub:"Prem Rouge es un sorprendente ejemplo de la «perfumería lenta».",author:"Alena Lavault",time:"hace 1 día"},
+{id:11944,cat:"Reseñas editoriales",title:"La línea Lutfah de la colección Arabiyat Prestige",sub:"Cualquier éxito de ventas debe ser y será copiado.",author:"Sergey Borisov",time:"hace 1 día"},
+{id:11943,cat:"Reseñas editoriales",title:"Con Amber Vanilla, Burberry Goddess revela una sensualidad más sofisticada",sub:"Burberry enriquece su línea Goddess con un nuevo flanker, Amber Vanilla.",author:"Sophie Normand",time:"hace 1 día"},
+{id:11942,cat:"Reseñas editoriales",title:"PITTI FRAGRANZE 2026: Un uppercut de piña borracho de golpes de Frapin",sub:"Orchid Man The Last Fight.",author:"Eddie Bulliqi",time:"hace 1 día"},
+{id:11941,cat:"Reseñas editoriales",title:"Melodie de L'Amour Parfums Dusita: Un perfume para una mujer fatal",sub:"Mi perfume favorito de Parfums Dusita de los diez años de existencia de la marca.",author:"Elena Prokofeva",time:"hace 1 día"},
+{id:11940,cat:"Reseñas editoriales",title:"Altamura de L'Entropiste: Naranja y Blanco",sub:"Baila mientras seas joven.",author:"Sergey Borisov",time:"hace 1 día"},
+{id:11939,cat:"Noticias de fragancias",title:"Imaginary Authors lanza Impassable Wilderness, inspirada en una próxima película",sub:"La fragancia es una colaboración con WILDWOOD, una serie de libros convertida en largometraje.",author:"Adam Forziati",time:"hace 2 días"},
+{id:11938,cat:"Reseñas editoriales",title:"Country Editions de Gissah: Blanco y Negro",sub:"Emarati Imperial y Omani Imperial.",author:"Sergey Borisov",time:"hace 2 días"},
+{id:11937,cat:"Reseñas editoriales",title:"Una ajetreada temporada de otoño para Maison Crivelli",sub:"Septiembre promete ser un mes ajetreado para la marca: una nueva edición y la apertura de su primera boutique mundial.",author:"Sophie Normand",time:"hace 2 días"},
+{id:11936,cat:"Reseñas editoriales",title:"Con Vanilla Aube, Ormonde Jayne pinta una obra maestra suavemente iluminada",sub:"Vainilla envuelta en sueños de cuero y miradas atesoradas. No es un postre, sino puro deseo inalterado.",author:"Elena Vosnaki",time:"hace 2 días"},
+{id:11935,cat:"Reseñas editoriales",title:"Nuevos flankers de L'Eau D'Issey: Un Twilly masculino y un Chanel accidental",sub:"Préstamo estético en el estilo distintivo de Issey.",author:"Eddie Bulliqi",time:"hace 2 días"},
+{id:11934,cat:"Fragancias nicho",title:"PITTI Fragranze 2026: Synesthesie presenta tres fragancias frescas",sub:"La marca italiana aporta frescura con tres nuevos aromas.",author:"Nicola Thomis",time:"hace 3 días"}];
+const POSTS=[
+{type:"FRAGRAM",text:"Dahn Al Oudh Qadeem",user:"Aromantetodo",likes:6,comments:4},
+{type:"POST",text:"¿Cuándo te diste cuenta de que tenías un problema? Yo lo tengo claro. Son tantos que no los puedo ni etiquetar.",user:"PipiLaMing",likes:6,comments:1},
+{type:"POST",text:"Para relajarse.",user:"Debi",likes:1,comments:1},
+{type:"POST",text:"Elegancia y adicción. Zimaya está rompiendo.",user:"Breza360",likes:1,comments:1},
+{type:"FRAGRAM",text:"Amazonian Rose",user:"RickyB.",likes:5,comments:0},
+{type:"POST",text:"Este es el estilo de perfumes que amo.",user:"Fernando Santana",likes:2,comments:0},
+{type:"POST",text:"Cómo ha bajado el 212 VIP Men reformulado... era mi favorito.",user:"Galamoth",likes:2,comments:0},
+{type:"FRAGRAM",text:"Eilish No 2",user:"Gerardo OR",likes:1,comments:1},
+{type:"FRAGRAM",text:"Nueva adquisición: Rayhaan Tiger. Simplemente me parece elegante.",user:"Rafa6.9",likes:2,comments:0},
+{type:"FRAGRAM",text:"IkerGilSC",user:"IkerGilSC",likes:1,comments:2}];
+const POPULAR=[["Liquid Brun","French Avenue","94713"],["Khamrah","Lattafa Perfumes","75805"],["Emporio Armani Stronger With You Intensely","Giorgio Armani",null],["Supremacy Collector's Edition Pour Homme","Afnan","98689"],["Imagination","Louis Vuitton","67370"],["Le Male Le Parfum","Jean Paul Gaultier","61856"],["Khamrah Qahwa","Lattafa Perfumes","88175"],["Y Eau de Parfum","Yves Saint Laurent",null],["Club de Nuit Intense Man","Armaf","34696"],["Vulcan Feu","French Avenue",null],["XJ 1861 Naxos","Xerjoff","30529"],["Le Male Elixir","Jean Paul Gaultier","81642"],["Hawas Ice","Rasasi","89050"],["Angels' Share","By Kilian","62615"],["MYSLF Eau de Parfum","Yves Saint Laurent","84094"],["Bois Impérial","Essential Parfums","64338"],["By the Fireplace","Maison Martin Margiela","31623"],["Bleu de Chanel Eau de Parfum","Chanel","25967"],["Le Beau Le Parfum","Jean Paul Gaultier",null],["Valentino Uomo Born In Roma Intense","Valentino","78740"],["Jazz Club","Maison Martin Margiela","20541"],["Tobacco Vanille","Tom Ford","1825"],["Aventus","Creed","9828"],["Althaïr","Parfums de Marly","84109"]];
+const POPBRANDS=["Lattafa Perfumes","Dior","Yves Saint Laurent","Guerlain","Giorgio Armani","French Avenue","Tom Ford","Armaf","Jean Paul Gaultier","Chanel","Amouage","Zara","Xerjoff","Parfums de Marly","Afnan","Versace","Dolce&Gabbana","Maison Alhambra","Louis Vuitton","By Kilian","Paris Corner","Maison Martin Margiela","Rabanne","Byredo"];
+const NEWSCATS=["Nuevas fragancias","Reseñas editoriales","Fragancias nicho","Noticias de fragancias","Eventos","Columnas","Fragancias vintage","Entrevistas","Lo mejor de","Libros, cine y vídeo","Materias primas","Perfumes de hogar","Fragancias y culturas","Original contra flanker","Novedades en tiendas","Baño y cuidado corporal","Ediciones especiales","Perfumes naturales","Pregunta a Fragrantica"];
 const NOTE_IMG={"Agua de coco": "1098", "Akigalawood": "697", "Ambermax™": "1850", "Ambrettolide": "919", "Ambrofix™": "1457", "Frutas confitadas": "948", "Georgywood": "1467", "Hedione": "640", "Helvetolida": "924", "Incienso": "893", "Lirios azules": "787", "Mahonial": "990", "Timur": "1070", "Té matcha": "1001", "abedul": "31", "albahaca": "119", "aldehídos": "165", "almizcle": "4", "ambroxan": "563", "anís": "393", "anís estrellado": "100", "azafrán": "55", "azúcar": "200", "azúcar moreno": "521", "benjuí": "69", "bergamota": "75", "cachemira": "348", "café": "139", "canela": "65", "caramelo": "183", "cardamomo": "63", "castaña": "578", "castóreo": "102", "cedro": "41", "cereza": "297", "cidra": "373", "cilantro": "993", "ciruela": "171", "clavo de olor": "61", "comino": "549", "coñac": "280", "cuero": "156", "cumarina": "259", "durazno (melocotón)": "117", "dátiles": "355", "elemí": "390", "enebro": "142", "flor de tiaré": "148", "flores blancas": "323", "frambuesa": "174", "gamuza": "196", "geranio": "21", "haba tonka": "73", "higo": "247", "incienso": "68", "jazmín": "14", "jengibre": "62", "lavanda": "1", "ládano": "15", "magnolia": "147", "mandarina": "82", "mandarina roja": "1538", "mango": "179", "manzana": "146", "melón": "172", "menta": "160", "metil pamplemousse": "467", "miel": "181", "mirra": "98", "musgo de roble": "39", "naranja": "80", "naranja sanguina": "286", "neroli": "17", "notas amaderadas": "315", "notas atalcadas": "482", "notas especiadas": "321", "notas florales": "314", "notas orientales": "483", "nuez moscada": "59", "opopónaco": "37", "pachulí": "34", "palo de rosa de Brasil": "110", "pera": "182", "petit grain": "3", "pimienta": "158", "pimienta de Sichuan": "213", "pimienta rosa": "91", "piña": "170", "praliné": "198", "raíz de lirio": "101", "regaliz": "195", "roble": "326", "romero": "49", "ron": "201", "rosa": "105", "salvia": "52", "semillas de zanahoria": "276", "sándalo": "33", "tabaco": "96", "toronja (pomelo)": "242", "vainilla": "74", "vetiver": "2", "violeta": "116", "yerba mate": "48", "ylang-ylang": "24", "ámbar": "54", "ámbar gris": "524", "Amberwood": "691", "Frutas rojas": "1805", "Maltol": "836", "aceite de vetiver de Java": "2", "ajenjo (absenta)": "369", "almendras acarameladas": "1051", "almizcle ambreta": "107", "almizcle blanco": "4", "almizcle gris": "4", "bayas rojas": "1805", "bayas silvestres": "1805", "benjuí de Siam": "69", "bergamota de Calabria": "75", "bergamota de Sicilia": "75", "bálsamo del Perú": "72", "cacao": "135", "canela de Ceylan": "65", "cardamomo guatemalteco": "63", "cedro de Virginia": "41", "cipriol (nagarmota)": "460", "clavos de olor": "61", "esclarea": "164", "especias": "322", "flor de azahar del naranjo": "16", "flor del naranjo tunesino": "16", "flor del tabaco": "96", "hojas de pachulí de Indonesia": "34", "hojas de tabaco": "96", "incienso de olíbano (franquincienso)": "95", "iris": "1414", "jazmín de Marruecos": "14", "jazmín sambac (sampaguita)": "14", "jengibre nigeriano": "62", "lima (limón verde)": "78", "limón (lima ácida)": "77", "limón italiano (lima italiana)": "77", "lirio de los valles (muguete)": "109", "ládano español": "15", "madera de oud": "114", "maracuyá (fruta de la pasión)": "161", "musgo": "39", "naranja siciliana": "80", "neroli de Túnez": "17", "notas acuáticas": "1178", "nuez moscada de Indonesia": "59", "pimienta blanca": "158", "pimienta negra": "158", "rosa de Bulgaria (rosa Damascena de Bulgaria)": "105", "rosa de mayo": "105", "rosa turca": "105", "vaina de vainilla": "74", "vainilla Bourbon": "74", "vetiver de Haití": "2", "ámbar negro": "54"}; const BRAND_IMG={"Afnan": "2048", "Akro": "3480", "Amouage": "122", "Armaf": "2068", "Bujairami": "5662", "By Kilian": "491", "Chanel": "30", "Creed": "50", "Dior": "160", "Essential Parfums": "3439", "Etat Libre d'Orange": "262", "Flavia": "5475", "French Avenue": "6258", "Fugazzi": "3900", "Gulf Orchid": "5769", "Ibraheem AlQurashi": "6368", "Initio Parfums Prives": "2260", "Jean Paul Gaultier": "72", "Khadlaj Perfumes": "4587", "Lattafa Perfumes": "1979", "Louis Vuitton": "2747", "Maison Alhambra": "4828", "Maison Crivelli": "3591", "Maison Francis Kurkdjian": "770", "Maison Martin Margiela": "845", "Montale": "150", "Nishane": "2232", "Odyon Dubai": "4963", "Oros": "1924", "Parfums de Marly": "1188", "Rasasi": "888", "The Woods Collection": "2826", "Tom Ford": "139", "Valentino": "100", "Xerjoff": "720", "Yves Saint Laurent": "99", "Zimaya": "5311"};
 const ACC_COLOR={}; DATA.forEach(p=>p.accords.forEach(a=>{ if(a.c&&!ACC_COLOR[a.n]) ACC_COLOR[a.n]=a.c; }));
 
@@ -255,6 +346,13 @@ function noteIcon(n){ const id=NOTE_IMG[n]; return id?`<i class="ni" style="back
 function brandLogo(b){ const id=BRAND_IMG[b]; return id?`<img class="blogo" src="brands/${id}.jpg" alt="" loading="lazy">`:''; }
 function stars(r){ if(r==null) return ''; return '★★★★★'; }
 
+
+const newsUrl = n => 'https://www.fragrantica.es/noticias/'+slug(n.title).replace(/-/g,'-')+'-'+n.id+'.html';
+const initials = a => a.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+function artHTML(n, cls){ return `<article class="art ${cls||''}"><a class="im" href="${newsUrl(n)}" target="_blank" rel="noopener"><img src="news/${n.id}.webp" alt="" loading="lazy"><span class="pill">${esc(n.cat)}</span></a><h3><a href="${newsUrl(n)}" target="_blank" rel="noopener">${esc(n.title)}</a></h3><p class="sub">${esc(n.sub)}</p><div class="byline"><span class="avatar">${initials(n.author)}</span><span><b>${esc(n.author)}</b><br><span class="muted">${esc(n.time)}</span></span></div></article>`; }
+function postHTML(p){ return `<div class="post"><span class="type">${esc(p.type)}</span><span class="txt">${esc(p.text)}</span><span class="foot"><b>${esc(p.user)}</b><span>♥ ${p.likes} · ✎ ${p.comments}</span></span></div>`; }
+function reviewRow(p, r){ return `<a class="rev" href="#p-${p.id}">${pic(p,'','',true)}<span><span class="brand small muted" style="letter-spacing:.1em;text-transform:uppercase">${esc(p.brand)}</span><b>${esc(p.name)}</b><span class="muted">${esc(r.slice(0,70))}…</span></span></a>`; }
+
 /* ---------- vistas ---------- */
 function cardHTML(p, extra){ const m=p.meta; return `<a class="card ${extra&&extra.me?'me':''}" href="#p-${p.id}">${m.inspired||m.inspiredName?'<span class="tag">clon</span>':''}${pic(p,"","",true)}<span class="brand">${esc(p.brand)}</span><span class="pname">${esc(p.name)}</span><span class="meta"><span>${p.year||''}${p.rating?' · '+p.rating.toFixed(2):''}</span><span>${extra&&extra.right!=null?extra.right:(m.price!=null?eur(m.price):'')}</span></span>${extra&&extra.sub?`<span class="small muted">${extra.sub}</span>`:''}</a>`; }
 function accordsHTML(p){ return `<ul class="accords">${p.accords.map(a=>`<li><i style="width:${a.w}%;background:${a.c||'#888'}"></i><a href="#a-${slug(a.n)}">${esc(a.n)}</a></li>`).join('')}</ul>`; }
@@ -264,25 +362,47 @@ function pyramidHTML(p, cls){ const N=p.notes; if(N.flat) return `<div class="py
 function vbar(items){ const max=Math.max(...items.map(i=>i[1]),1); return `<ul class="vbar">${items.map(i=>`<li class="${i[2]||''}"><span>${i[0]}</span><i style="width:${Math.round(i[1]/max*100)}%"></i><b>${fmt(i[1])}</b></li>`).join('')}</ul>`; }
 
 function viewHome(){
-  const mad=BY['142618'], on=BY['49755'];
   const brands=[...new Set(DATA.map(p=>p.brand))].sort();
   const fams=[...new Set(DATA.map(p=>p.family).filter(Boolean))].sort();
+  const newest=DATA.slice().sort((a,b)=>(b.year||0)-(a.year||0)||(b.votes||0)-(a.votes||0));
+  const revs=DATA.filter(p=>p.reviews.length).sort((a,b)=>(b.votes||0)-(a.votes||0)).slice(0,14);
+  const years={}; DATA.forEach(p=>{ if(p.year) years[p.year]=(years[p.year]||0)+1; }); const ys=Object.keys(years).sort(); const ymax=Math.max(...Object.values(years));
+  const nRev=DATA.reduce((s,p)=>s+p.reviews.length,0);
   return `
-  <section class="hero"><div><span class="small muted" style="letter-spacing:.14em;text-transform:uppercase">Enciclopedia de fragancias · ${DATA.length} perfumes</span>
-    <h1>Busca un perfume por nombre, nota, acorde o foto</h1>
-    <p>Fichas con pirámide olfativa, acordes con peso real, valoraciones, reseñas y un «me recuerda a» calculado por notas y acordes. Hecha a partir del caso <a href="#p-142618">Mad Love de Bujairami</a>, el clon de <a href="#p-49755">Ombre Nomade</a>.</p>
-    <div class="chips"><a class="btn" href="#p-142618">Ver Mad Love</a><a class="btn ghost" href="#foto">Buscar por foto</a><a class="btn ghost" href="#mejor">Mismo concepto o mejor</a></div></div>
-    <img src="${mad.cut}" alt="Frasco de Mad Love"></section>
-  <div class="stat"><div><b>${DATA.length}</b><span>perfumes</span></div><div><b>${brands.length}</b><span>marcas</span></div><div><b>${new Set(DATA.flatMap(p=>p.allNotes)).size}</b><span>notas</span></div><div><b>${Object.keys(ACC_COLOR).length}</b><span>acordes</span></div><div><b>${fmt(DATA.reduce((s,p)=>s+(p.votes||0),0))}</b><span>votos en Fragrantica</span></div></div>
-  <section class="panel"><h2>Explorar</h2>
-    <div class="filters"><select id="f-brand"><option value="">Todas las marcas</option>${brands.map(b=>`<option>${esc(b)}</option>`).join('')}</select>
-      <select id="f-fam"><option value="">Todas las familias</option>${fams.map(b=>`<option>${esc(b)}</option>`).join('')}</select>
-      <select id="f-gender"><option value="">Cualquier género</option><option>Hombres y Mujeres</option><option>Hombres</option><option>Mujeres</option></select>
-      <select id="f-sort"><option value="rating">Mejor valorados</option><option value="votes">Más votados</option><option value="year">Más nuevos</option><option value="price">Precio, menor</option><option value="name">Nombre</option></select>
-      <span class="small muted" id="f-count"></span></div>
-    <div class="cards" id="f-grid" style="margin-top:14px"></div></section>`;
+  <div class="home">
+   <div class="hmain">
+    ${artHTML(NEWS[0],'hero')}
+    <section><div class="shead"><h2>De la comunidad</h2><div class="tabs mini" role="tablist"><button role="tab" aria-selected="true" data-k="hoy">Hoy</button><button role="tab" aria-selected="false" data-k="semana">Semana</button><button role="tab" aria-selected="false" data-k="mes">Mes</button></div><a class="more" href="#feed">Abrir el feed ›</a></div>
+      <div class="row" id="posts">${POSTS.slice(0,6).map(postHTML).join('')}</div></section>
+    <div class="grid2art">${NEWS.slice(1,3).map(n=>artHTML(n)).join('')}</div>
+    ${artHTML(NEWS[3])}
+    <section><div class="shead"><h2>Nuevas fragancias</h2><a class="more" href="#q-2026">Ver 2026 ›</a></div><div class="row">${newest.slice(0,14).map(p=>cardHTML(p)).join('')}</div></section>
+    <div class="grid2art">${NEWS.slice(4,8).map(n=>artHTML(n)).join('')}</div>
+    <section><div class="shead"><h2>Qué hay de nuevo</h2><a class="more" href="#noticias">Todas las noticias ›</a></div><div class="grid2art">${NEWS.slice(8,14).map(n=>artHTML(n)).join('')}</div></section>
+    <section><h2>Noticias por categoría</h2><div class="chips">${NEWSCATS.map(c=>`<a class="chip" href="#noticias"><i style="background:var(--accent2)"></i>${esc(c)}</a>`).join('')}</div></section>
+    <section><div class="shead"><h2>Añadidos recientemente</h2><a class="more" href="#b-bujairami">Bujairami ›</a></div><div class="row">${newest.slice(14,28).map(p=>cardHTML(p)).join('')}</div></section>
+    <section class="panel"><h2>Explorar el catálogo</h2>
+      <div class="filters"><select id="f-brand"><option value="">Todas las marcas</option>${brands.map(b=>`<option>${esc(b)}</option>`).join('')}</select>
+        <select id="f-fam"><option value="">Todas las familias</option>${fams.map(b=>`<option>${esc(b)}</option>`).join('')}</select>
+        <select id="f-gender"><option value="">Cualquier género</option><option>Hombres y Mujeres</option><option>Hombres</option><option>Mujeres</option></select>
+        <select id="f-sort"><option value="rating">Mejor valorados</option><option value="votes">Más votados</option><option value="year">Más nuevos</option><option value="price">Precio, menor</option><option value="name">Nombre</option></select>
+        <span class="small muted" id="f-count"></span></div>
+      <div class="cards" id="f-grid" style="margin-top:14px"></div></section>
+    <section class="cta"><h3>Únete a nuestra comunidad de fragancias</h3><p>Califica perfumes, guarda favoritos, compara frascos y busca por foto. Olfatorio es una réplica abierta de Fragrantica hecha con datos públicos.</p><div class="chips"><a class="btn" style="background:#fff;color:var(--accent);border-color:#fff" href="#p-142618">Empieza por Mad Love</a><a class="btn ghost" style="color:#fff;border-color:#fff" href="#foto">Buscar por foto</a></div></section>
+   </div>
+   <aside class="side">
+    <div class="panel"><h2>Enciclopedia de fragancias</h2><div class="stats"><span>Fragancias</span><b>${fmt(DATA.length)}</b><span>Reseñas</span><b>${fmt(nRev)}</b><span>Notas</span><b>${fmt(new Set(DATA.flatMap(p=>p.allNotes)).size)}</b><span>Marcas</span><b>${brands.length}</b><span>Votos en Fragrantica</span><b>${fmt(DATA.reduce((s,p)=>s+(p.votes||0),0))}</b></div>
+      <div class="hist" title="Lanzamientos por año">${ys.map(y=>`<i style="height:${Math.max(8,Math.round(years[y]/ymax*100))}%" title="${y}: ${years[y]}"></i>`).join('')}</div><div class="small muted" style="display:flex;justify-content:space-between"><span>${ys[0]}</span><span>lanzamientos por año</span><span>${ys[ys.length-1]}</span></div></div>
+    <div class="panel"><h2>Perfume del día</h2>${cardHTML(BY['142618'],{sub:'Clon de Ombre Nomade, 97 % según usuarios',me:true})}</div>
+    <div class="panel"><h2>Últimas reseñas</h2>${revs.map(p=>reviewRow(p,p.reviews[0])).join('')}<a class="btn ghost sm" style="margin-top:12px" href="#q-oud">Más reseñas</a></div>
+    <div class="panel"><h2>Perfumes más populares</h2><ol class="rank">${POPULAR.map(([n,b,id],i)=>`<li><span class="n">${i+1}.</span>${id&&BY[id]?`<a href="#p-${id}">${esc(n)} <span class="muted">${esc(b)}</span></a>`:`<span>${esc(n)} <span class="muted">${esc(b)}</span></span>`}</li>`).join('')}</ol><p class="small muted" style="margin-top:8px">Ranking de fragrantica.es el 3 de octubre de 2026. Los enlazados están en el catálogo.</p></div>
+    <div class="panel"><h2>Marcas más populares</h2><ol class="rank">${POPBRANDS.map((b,i)=>`<li><span class="n">${i+1}.</span>${DATA.some(p=>p.brand===b)?`<a href="#b-${slug(b)}">${esc(b)}</a>`:`<span>${esc(b)}</span>`}</li>`).join('')}</ol></div>
+   </aside>
+  </div>`;
 }
-function bindHome(){ const g=document.getElementById('f-grid'); if(!g) return; const upd=()=>{ const b=document.getElementById('f-brand').value, f=document.getElementById('f-fam').value, ge=document.getElementById('f-gender').value, s=document.getElementById('f-sort').value;
+function viewNoticias(){ return `<h1>Noticias</h1><p class="muted">Portada de fragrantica.es el 3 de octubre de 2026. Cada artículo abre en Fragrantica.</p><div class="grid2art">${NEWS.map(n=>artHTML(n)).join('')}</div>`; }
+function viewFeed(){ return `<h1>Feed de la comunidad</h1><p class="muted">Publicaciones de la comunidad de fragrantica.es, 3 de octubre de 2026.</p><div class="cards" style="grid-template-columns:repeat(auto-fill,minmax(240px,1fr))">${POSTS.map(postHTML).join('')}</div>`; }
+function bindHome(){ document.querySelectorAll('.tabs.mini [role=tab]').forEach(t=>t.addEventListener('click',()=>{ document.querySelectorAll('.tabs.mini [role=tab]').forEach(o=>o.setAttribute('aria-selected','false')); t.setAttribute('aria-selected','true'); const k=t.dataset.k; const L=k==='hoy'?POSTS.slice(0,6):k==='semana'?POSTS:POSTS.slice().sort((a,b)=>b.likes-a.likes); document.getElementById('posts').innerHTML=L.map(postHTML).join(''); })); const g=document.getElementById('f-grid'); if(!g) return; const upd=()=>{ const b=document.getElementById('f-brand').value, f=document.getElementById('f-fam').value, ge=document.getElementById('f-gender').value, s=document.getElementById('f-sort').value;
   let L=DATA.filter(p=>(!b||p.brand===b)&&(!f||p.family===f)&&(!ge||p.gender===ge));
   const key={rating:(a,b)=>(b.rating||0)-(a.rating||0),votes:(a,b)=>(b.votes||0)-(a.votes||0),year:(a,b)=>(b.year||0)-(a.year||0),price:(a,b)=>(a.meta.price??1e9)-(b.meta.price??1e9),name:(a,b)=>a.name.localeCompare(b.name)}[s]; L.sort(key);
   g.innerHTML=L.map(p=>cardHTML(p)).join(''); document.getElementById('f-count').textContent=L.length+' perfumes'; };
@@ -435,6 +555,8 @@ function render(h){ try{h=decodeURIComponent(h);}catch(e){} CUR=h; const app=doc
   if(!h) {html=viewHome(); bind=bindHome;}
   else if(h.startsWith('p-')) html=viewPerfume(h.slice(2));
   else if(h==='marcas') html=viewBrands();
+  else if(h==='noticias') html=viewNoticias();
+  else if(h==='feed') html=viewFeed();
   else if(h.startsWith('b-')) html=viewBrand(h.slice(2));
   else if(h==='notas') html=viewNotes();
   else if(h.startsWith('n-')) html=viewNote(h.slice(2));
@@ -446,7 +568,7 @@ function render(h){ try{h=decodeURIComponent(h);}catch(e){} CUR=h; const app=doc
   else if(h.startsWith('q-')) html=viewSearch(decodeURIComponent(h.slice(2).replace(/_/g,'%')));
   else html=viewHome(), bind=bindHome;
   app.classList.remove('view'); void app.offsetWidth; app.classList.add('view'); app.innerHTML=html; if(bind) bind(); window.scrollTo({top:0}); motion(app);
-  document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('on', a.getAttribute('href')===('#'+h.split('-')[0]) || (!h&&a.getAttribute('href')==='#')));
+  document.querySelectorAll('#nav > a').forEach(a=>a.classList.toggle('on', a.getAttribute('href')===('#'+h.split('-')[0])));
 }
 
 function motion(root){ [...root.children].forEach((c,i)=>c.style.setProperty('--s',Math.min(i,10)));
@@ -464,5 +586,7 @@ document.addEventListener('pointerleave',e=>{ const t=e.target&&e.target.closest
 document.addEventListener('pointerout',e=>{ const t=e.target.closest&&e.target.closest('.tilt'); if(t&&!t.contains(e.relatedTarget)){const p=t.querySelector('.pic'); if(p) p.style.transform='';} });
 document.addEventListener('pointerdown',e=>{ const b=e.target.closest('.btn'); if(b){const r=b.getBoundingClientRect(); b.style.setProperty('--rx',(e.clientX-r.left)+'px'); b.style.setProperty('--ry',(e.clientY-r.top)+'px');} });
 window.addEventListener('scroll',()=>{document.querySelector('header').classList.toggle('scrolled',window.scrollY>8);},{passive:true});
+
+(function(){ const b=document.getElementById('ddbtn'), m=document.getElementById('ddmenu'); b.addEventListener('click',e=>{e.stopPropagation(); const open=m.hidden; m.hidden=!open; b.setAttribute('aria-expanded',String(open));}); document.addEventListener('click',e=>{ if(!e.target.closest('.dd')){ m.hidden=true; b.setAttribute('aria-expanded','false'); } }); m.addEventListener('click',()=>{m.hidden=true;}); })();
 window.addEventListener('hashchange',route); window.addEventListener('popstate',route); route();
 </script>
